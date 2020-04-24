@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace exp\src;
+namespace exp\src\hello_phpunit;
 
 class HelloPHPUnit {
     public function __construct()
