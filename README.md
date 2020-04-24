@@ -10,11 +10,20 @@ Requires:
 - Clone this project
 - Install dependencies
 ```
-composer install && composer dump-autoload
+composer install
 ```
 - Run test
+
+On MacOS or Linux:
+
 ```
-composer test
+composer test_unix
+```
+
+On Windows:
+
+```
+composer test_win
 ```
 
 ### Run a specific test case
