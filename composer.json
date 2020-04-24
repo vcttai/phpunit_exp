@@ -1,0 +1,17 @@
+{
+    "name": "taivu/phpunit_exp",
+    "description": "Explore PHPUnit",
+    "scripts": {
+        "test": "./vendor/bin/phpunit test"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.1.3"
+    },
+    "authors": [
+        {
+            "name": "tai-vu",
+            "email": "tai-vu@cybozu.vn"
+        }
+    ],
+    "require": {}
+}
