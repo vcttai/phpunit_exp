@@ -10,7 +10,7 @@ Requires:
 - Clone this project
 - Install dependencies
 ```
-composer install
+composer install && composer dump-autoload
 ```
 - Run test
 ```

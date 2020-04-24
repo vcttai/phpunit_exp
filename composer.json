@@ -1,6 +1,11 @@
 {
     "name": "taivu/phpunit_exp",
     "description": "Explore PHPUnit",
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
     "scripts": {
         "test": "./vendor/bin/phpunit test"
     },
