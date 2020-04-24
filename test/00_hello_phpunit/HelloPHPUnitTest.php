@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
-require_once(__DIR__ . "/../../src/00_hello_phpunit/HelloPHPUnit.php");
+require_once(__DIR__ . "/../../src/my_autoload.php");
 
+use PHPUnit\Framework\TestCase;
 use exp\src\hello_phpunit\HelloPHPUnit;
 
 class HelloPHPUnitTest extends TestCase

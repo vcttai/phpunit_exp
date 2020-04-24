@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once (__DIR__ . '/HelloPHPUnit.php');
+require_once (__DIR__ . '/../my_autoload.php');
 use exp\src\hello_phpunit\HelloPHPUnit;
 
 $hello = new HelloPHPUnit();
