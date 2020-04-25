@@ -17,10 +17,10 @@ class GameShopTest extends TestCase
     }
 
     public function testLogTransactionHasBeenCalled() {
-        // Only methods are in setMethods() will be mocked and return NULL by default
+        // Only methods are in onlyMethods() will be mocked and return NULL by default
         // Other functions still remain.
         $shop_mock = $this->getMockBuilder(GameShop::class)
-                          ->setMethods(['logTransaction'])
+                          ->onlyMethods(['logTransaction'])
                           ->getMock();
 
         $shop_mock->expects($this->once())
@@ -31,7 +31,7 @@ class GameShopTest extends TestCase
 
     public function testLogTransactionHasNotBeenCalled() {
         $shop_mock = $this->getMockBuilder(GameShop::class)
-                          ->setMethods(['logTransaction'])
+                          ->onlyMethods(['logTransaction'])
                           ->getMock();
 
         $shop_mock->expects($this->never())
