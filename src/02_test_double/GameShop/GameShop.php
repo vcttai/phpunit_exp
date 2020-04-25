@@ -10,8 +10,8 @@ class GameShop
 
     public function __construct()
     {
-        $selled_games = [];
-        $sale_number = 0;
+        $this->selled_games = [];
+        $this->sale_number = 0;
     }
 
     public function sellGame( string $game_name, $write_log = true ) {
