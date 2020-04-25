@@ -44,6 +44,8 @@ e.g
 
   - Each case will have a separate folder (e.g 00_hello_phpunit, ...)
   - In each folder, File `main.js` is where the code in that folder is used as examples.
+    - You can run those files by command: `php -f <file_name>`
+    - E.g: `php -f src/02_test_double/GameServer/main.php`
   
 - All test code is put in folder `test`
 
