@@ -12,6 +12,9 @@ Requires:
 ```
 composer install
 ```
+
+Note: If you add more classes or change the class name, you have to re-generate the `autoload` file by running: `composer dump-autoload`
+
 - Run test
 
 On MacOS or Linux:
@@ -43,3 +46,10 @@ e.g
   - In each folder, File `main.js` is where the code in that folder is used as examples.
   
 - All test code is put in folder `test`
+
+## Reference documents
+
+- [Juan Treminio's blog](https://jtreminio.com/blog/unit-testing-tutorial-part-v-mock-methods-and-overriding-constructors/)
+- [PHPUnit manual](https://phpunit.readthedocs.io/en/9.1/index.html) 
+
+Indeed, PHPUnit munual lacks many documentations, Juan Treminio's notes give us many more information about mocking objects, I own him a big thanks.
