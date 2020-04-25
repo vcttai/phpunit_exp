@@ -6,16 +6,8 @@ require_once (__DIR__ . '/../../../vendor/autoload.php');
 use PHPUnit\Framework\TestCase;
 use exp\src\test_double\GameShop;
 
-class GameShopTest extends TestCase
+class GameShopMockTest extends TestCase
 {
-    public function testSellGameWillIncreaseSaleNumber() {
-        $shop = new GameShop();
-        $some_game = 'Uncharted';
-
-        $this->assertSame(1, $shop->sellGame($some_game));
-        $this->assertSame(2, $shop->sellGame($some_game));
-    }
-
     public function testIfAllStubFunctionsReturnNull() {
         // Create the stub object
         $shop_mock = $this->getMockBuilder(GameShop::class)
