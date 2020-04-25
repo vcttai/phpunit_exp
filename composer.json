@@ -11,7 +11,7 @@
         "test_win": "vendor\\bin\\phpunit test"
     },
     "require-dev": {
-        "phpunit/phpunit": "9.1.3"
+        "phpunit/phpunit": "8.5.4"
     },
     "authors": [
         {
