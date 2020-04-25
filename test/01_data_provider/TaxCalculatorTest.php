@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once(__DIR__ . "/../../vendor/autoload.php");
+require_once __DIR__ . "/../../src/01_data_provider/TaxCalculator.php";
 
 use PHPUnit\Framework\TestCase;
 use exp\src\tax\TaxCalculator;
