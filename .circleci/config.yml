@@ -30,15 +30,18 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: composer install -n --prefer-dist
+      - run:
+          name: Install dependencies via Composer
+          command: composer install -n --prefer-dist
 
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
 
-      # run tests with phpunit
-      - run: composer test_unix
+      - run:
+          name: Run unit test with PHPUnit
+          command: composer test_unix
 
 workflows:
   version: 2
