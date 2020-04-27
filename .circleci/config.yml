@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  PHPUnit-unit-test:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.2.30-node-browsers-legacy
@@ -41,3 +41,9 @@ jobs:
 
       # run tests with phpunit
       - run: composer test_unix
+
+workflows:
+  version: 2
+  continuous-integration:
+    jobs:
+      - PHPUnit-unit-test
