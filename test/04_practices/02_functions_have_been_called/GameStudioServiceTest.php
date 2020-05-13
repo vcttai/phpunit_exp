@@ -1,0 +1,88 @@
+<?php
+declare(strict_types=1);
+
+require_once (__DIR__ . '/../../../vendor/autoload.php');
+require_once (__DIR__ . '/../../../src/04_practices/Constant.php');
+
+use exp\src\practice\GameStudioService;
+use exp\src\practice\MonicaStudio;
+use exp\src\practice\PixelStudio;
+use PHPUnit\Framework\TestCase;
+
+class GameStudioServiceTesting extends GameStudioService
+{
+    public function setStudioList(array $studio_list) {
+        $this->studio_list = $studio_list;
+    }
+}
+
+class GameStudioServiceTest extends TestCase
+{
+    public $season;
+    protected function setUp(): void
+    {
+        $this->season = SUMMER_SEASON;
+    }
+
+    public function testGetSaleGamesWillCallToStudioListWithCorrectParameters() {
+        $Pixel_mock = $this->getMockBuilder(PixelStudio::class)
+                           ->getMock();
+        $Pixel_mock->expects($this->once())
+                   ->method('getSaleGames')
+                   ->with($this->season)
+                   ->willReturn([]);
+
+        $Monica_mock = $this->getMockBuilder(MonicaStudio::class)
+                            ->getMock();
+        $Monica_mock->expects($this->once())
+                    ->method('getSaleGames')
+                    ->with($this->season)
+                    ->willReturn([]);
+
+        $studio_service = new GameStudioServiceTesting();
+        $studio_list = [$Pixel_mock, $Monica_mock];
+        $studio_service->setStudioList($studio_list);
+
+        $studio_service->getSaleGames($this->season);
+    }
+
+    public function testGetSaleGamesWillReturnCorrectData() {
+        $expected_return = [
+            'The first game',
+            'The second game',
+        ];
+
+        $Pixel_mock = $this->getMockBuilder(PixelStudio::class)
+            ->getMock();
+        $Pixel_mock->method('getSaleGames')
+                   ->willReturn([$expected_return[0]]);
+
+        $Monica_mock = $this->getMockBuilder(MonicaStudio::class)
+            ->getMock();
+        $Monica_mock->method('getSaleGames')
+                    ->willReturn([$expected_return[1]]);
+
+        $studio_service = new GameStudioServiceTesting();
+        $studio_list = [$Pixel_mock, $Monica_mock];
+        $studio_service->setStudioList($studio_list);
+
+        $this->assertEquals($expected_return, $studio_service->getSaleGames($this->season));
+    }
+
+    public function testNotifyNewCampaignWillUpdateStudioList() {
+        $studio_service_mock = $this->getMockBuilder(GameStudioService::class)
+                                    ->onlyMethods(['updateStudioList'])
+                                    ->getMock();
+
+        $studio_service_mock->expects($this->once())->method('updateStudioList');
+
+        $studio_service_mock->notifyNewCampaign();
+    }
+
+    public function testUpdateStudioListWillThrowError() {
+        $this->expectException(ErrorException::class);
+
+        $studio_service = new GameStudioService();
+        $studio_service->updateStudioList();
+    }
+}
