@@ -10,44 +10,17 @@ use PHPUnit\Framework\TestCase;
 
 class GameStoreTest extends TestCase
 {
-    /**
-     * @dataProvider getDataNotInSaleSeason
-     * @param $sale_season
-     * @param $request_season
-     * @throws ErrorException
-     */
-    public function testGetSaleListWillThrowErrorWhenNotInSaleSeason($sale_season, $request_season) {
-        $game_store = new GameStore($sale_season);
 
-        $this->expectException(ErrorException::class);
-
-        $game_store->getSaleList($request_season);
-    }
-
-    public function getDataNotInSaleSeason() {
-        return [
-            [SPRING_SEASON, SUMMER_SEASON],
-            [SPRING_SEASON, FALL_SEASON],
-            [SPRING_SEASON, WINTER_SEASON],
-        ];
+    public function testGetSaleListWillThrowErrorWhenNotInSaleSeason() {
+        //TODO: Test function getSaleList() will throw error if not in Sale season
     }
 
     public function testGetSaleListWillCallToServiceDuringSale() {
-        $season = SPRING_SEASON;
-        $game_store = new GameStore($season);
+        //TODO: Test function getSaleList() will call to service in case of sale season
 
-        $studio_service_mock = $this->getMockBuilder(GameStudioService::class)->getMock();
-        $studio_service_mock->expects($this->once())->method('updateStudioList');
-        $studio_service_mock->expects($this->once())->method('getSaleGames')->willReturn([]);
+        //HINT: You need to:
+        // - Fake GameStudioService
+        // - Fake private property $studio_service (use reflection class)
 
-        $store_reflection = new ReflectionClass(GameStore::class);
-        try {
-            $service_reflection = $store_reflection->getProperty('studio_service');
-            $service_reflection->setAccessible(true);
-            $service_reflection->setValue($game_store, $studio_service_mock);
-        }
-        catch (ReflectionException $exception) {}
-
-        $game_store->getSaleList($season);
     }
 }
